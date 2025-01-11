@@ -1,27 +1,118 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const Details = () => {
-  return (
-         <form class="payment" method="post" action="send_email.php">
-                <h1 class="payTitle">Personal Information</h1>
-                <label>Name and Surname</label>
-                <input type="text" placeholder="John Doe" class="payInput" id="name" name="name"/>
-                <label>Phone Number</label>
-                <input type="text" placeholder="+1 234 5678" class="payInput" id="number" name="number"/>
-                <label>Email</label>
-                <input type="email" placeholder="example@mail.com" class="payInput" id="email" name="email"/>
-                <label>Full Address</label>
-                <input type="text" placeholder="23, john street, london" class="payInput" id="address" name="address"/>
-                <label>Amount Paid</label>
-                <input type="text" al class="payInput" id="payment" name="image" placeholder='$1,000'/>
-                {/* <label>Desired Shipping Date</label>
-                <input type="date" placeholder="20/12/2012" class="payInput" id="date" name="date"/> */}
-                
-                
-                <input type="submit" name="submit" value="Send your Details" id="payButton"></input>
-                <span class="close"><a href="/">X</a></span>
-        </form>
-  )
-}
+  const [formData, setFormData] = useState({
+    name: "",
+    number: "",
+    email: "",
+    address: "",
+    payment: "",
+  });
 
-export default Details
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const message = `
+      Name and Surname: ${formData.name}
+      Phone Number: ${formData.number}
+      Email: ${formData.email}
+      Full Address: ${formData.address}
+      Amount Paid: ${formData.payment}
+    `;
+
+    try {
+      const response = await fetch("https://formspree.io/f/mpwwkagb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email, // Recipient email
+          message: message,     // Custom message with form data
+        }),
+      });
+
+      if (response.ok) {
+        alert("Details sent successfully!");
+        setFormData({
+          name: "",
+          number: "",
+          email: "",
+          address: "",
+          payment: "",
+        });
+      } else {
+        alert("Failed to send details. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while sending details.");
+    }
+  };
+
+  return (
+    <form className="payment" onSubmit={handleSubmit}>
+      <h1 className="payTitle">Personal Information</h1>
+
+      <label>Name and Surname</label>
+      <input
+        type="text"
+        placeholder="John Doe"
+        className="payInput"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+
+      <label>Phone Number</label>
+      <input
+        type="text"
+        placeholder="+1 234 5678"
+        className="payInput"
+        name="number"
+        value={formData.number}
+        onChange={handleChange}
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        placeholder="example@mail.com"
+        className="payInput"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+
+      <label>Full Address</label>
+      <input
+        type="text"
+        placeholder="23, John Street, London"
+        className="payInput"
+        name="address"
+        value={formData.address}
+        onChange={handleChange}
+      />
+
+      <label>Amount Paid</label>
+      <input
+        type="text"
+        placeholder="$1,000"
+        className="payInput"
+        name="payment"
+        value={formData.payment}
+        onChange={handleChange}
+      />
+
+      <input type="submit" value="Send your Details" id="payButton" />
+      <span className="close">
+        <a href="/">X</a>
+      </span>
+    </form>
+  );
+};
+
+export default Details;
