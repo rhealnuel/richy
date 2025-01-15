@@ -48,9 +48,9 @@ const Home = () => {
                         
                         <div class="flex justify-between">
                             <p class="text-[18px] font-bold">Royal Card</p>
-                            <Link to={"/pay?price=$500"}><button id="productButton1" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy Now</button></Link>
+                            <Link to={"/pay?price=$350"}><button id="productButton1" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy Now</button></Link>
                         </div>
-                        <p> <span class="font-bold text-[#0077ff]">Price: </span> <span id="p1">$500</span></p>
+                        <p> <span class="font-bold text-[#0077ff]">Price: </span> <span id="p1">$350</span></p>
                     </div>
                 </div>
                 <div class="h-fit w-fit bg-white rounded-2xl shadow-md">
@@ -58,11 +58,11 @@ const Home = () => {
                         <img src={member2} alt="" class="w-[260px] h-[230px] lg:w-[300px] lg:h-[280px] md:w-[300px] md:h-[280px] lg:pb-4"/>
                         <div class="flex justify-between">
                             <p class="text-[18px] font-bold">VIP Card</p>
-                           <Link to={"/pay?price=$1,000"}> <button id="productButton2" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy
+                           <Link to={"/pay?price=$950"}> <button id="productButton2" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy
                                 Now</button>
                                 </Link>
                         </div>
-                        <p> <span class="font-bold text-[#0077ff]">Price: </span><span id="p2">$1000</span></p>
+                        <p> <span class="font-bold text-[#0077ff]">Price: </span><span id="p2">$950</span></p>
                     
                     </div>
                 </div>
@@ -71,9 +71,9 @@ const Home = () => {
                         <img src={member3} alt="" class="w-[260px] h-[230px] lg:w-[300px] lg:h-[280px] md:w-[300px] md:h-[280px] lg:pb-4" />
                         <div class="flex justify-between">
                             <p class="text-[18px] font-bold">Gold Card</p>
-                            <Link to={"/pay?price=$2,000"}><button id="productButton3" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy Now</button></Link>
+                            <Link to={"/pay?price=$1,500"}><button id="productButton3" class="text-[18px] font-semibold p-1 rounded-md bg-black text-white">Buy Now</button></Link>
                         </div>
-                        <p> <span class="font-bold text-[#0077ff]">Price: </span><span id="p3">$2000</span></p>
+                        <p> <span class="font-bold text-[#0077ff]">Price: </span><span id="p3">$1,500</span></p>
                         
                     </div>
                 </div>    
