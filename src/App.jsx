@@ -15,7 +15,7 @@ function App() {
     
     <Router>
         <Routes>
-          <Route path='/willnotopen' element={<Home/>} />
+          <Route path='/' element={<Home/>} />
           <Route path='/pay' element={<Pay/>} />
           <Route path='/confirm' element={<Confirm/>} />
           <Route path='/details' element={<Details/>} />
